@@ -280,10 +280,51 @@
             background: rgba(30, 41, 59, 0.3);
         }
 
+        .projects-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .projects-toggle {
+            display: inline-flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .toggle-btn {
+            padding: 10px 25px;
+            background: rgba(51, 65, 85, 0.5);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 25px;
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .toggle-btn:hover {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-color: transparent;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+        }
+
+        .additional-projects {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .additional-projects.show {
+            display: block;
         }
 
         .project-card {
@@ -311,7 +352,6 @@
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
-        
 
         /* Clubs Section */
         .clubs-grid {
@@ -351,7 +391,6 @@
             font-size: 0.95rem;
             line-height: 1.5;
         }
-
 
         /* Skills Section */
         .skills-grid {
@@ -459,6 +498,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#clubs">Clubs</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -470,11 +510,11 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Vinay Devarakonda</h1>
-                <p class="subtitle">Data Scientist • AI Engineer • Software Developer</p>
+                <p class="subtitle">Data Scientist • AI Engineer • ML Researcher</p>
                 <p class="description">
                     Passionate about leveraging cutting-edge AI and machine learning to solve complex problems. 
                     Currently pursuing dual degrees in Statistics & Data Science and Mathematics at UT Austin, 
-                    with hands-on experience in computer vision, generative AI, and full-stack development.
+                    with hands-on experience in machine learning research, computer vision, and computational seismology.
                 </p>
                 <div class="cta-buttons">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
@@ -491,18 +531,20 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I'm a driven computer science and mathematics student with a passion for artificial intelligence 
-                        and data science. My journey spans from developing YOLO-based computer vision models for sports 
-                        analytics to building RAG applications and working with leading LLMs.
+                        I'm a driven mathematics and data science student with a passion for machine learning research 
+                        and artificial intelligence. My journey spans from developing Physics-Informed Neural Networks 
+                        for weather prediction to building computer vision models for sports analytics and conducting 
+                        computational seismology research.
                     </p>
                     <p>
-                        With experience at companies like StatOracle and Outlier.ai, I've honed my skills in machine 
-                        learning, deep learning, and AI engineering. I love tackling challenging problems that sit at 
+                        Currently, I'm engaged in multiple research positions at the Oden Institute, Hendrickson Lab, 
+                        and HUMAIN Lab, where I work on cutting-edge problems in seismic data analysis, ecological 
+                        modeling, and financial forecasting using LLMs. I love tackling challenging problems that sit at 
                         the intersection of mathematics, computer science, and real-world applications.
                     </p>
                     <p>
-                        When I'm not coding or studying, you can find me playing tennis or exploring the latest 
-                        developments in AI research.
+                        When I'm not coding or researching, you can find me playing tennis or exploring the latest 
+                        developments in AI and machine learning research.
                     </p>
                 </div>
                 <div class="education-card">
@@ -529,59 +571,57 @@
                 <div class="job-card">
                     <div class="job-header">
                         <div>
+                            <div class="job-title">Machine Learning Research Intern</div>
+                            <div class="company">Oden Institute – Texas Consortium for Computational Seismology • Austin, TX</div>
+                        </div>
+                        <div class="job-period">Oct 2025 – Present</div>
+                    </div>
+                    <ul>
+                        <li>Developing an attribute to transform complex seismic data for SAM 2 and DINOv3 segmentation models</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Data Science Intern</div>
+                            <div class="company">Hendrickson Lab • Austin, TX</div>
+                        </div>
+                        <div class="job-period">Oct 2025 – Present</div>
+                    </div>
+                    <ul>
+                        <li>Building species distribution models by integrating Google Satellite Embeddings with PostgreSQL data hosted on Texas Advanced Computing Center, applying predictive analytics to map habitat suitability</li>
+                        <li>Developing interactive geospatial visualizations of species occurrence data to support ecological modeling</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Machine Learning Research Assistant</div>
+                            <div class="company">HUMAIN Lab (Advisor: Dr. Leqi Liu) • Austin, TX</div>
+                        </div>
+                        <div class="job-period">Sep 2025 – Present</div>
+                    </div>
+                    <ul>
+                        <li>Engineering a comprehensive Python framework for evaluating LLMs on structured, short-term stock forecasting</li>
+                        <li>Integrating y-finance market data and RSS-based news sentiment for multi-modal evaluation pipelines</li>
+                        <li>Benchmarking against baseline strategies on risk-adjusted metrics across 10+ U.S equities</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
                             <div class="job-title">Computer Vision Engineer</div>
                             <div class="company">StatOracle • Austin, TX</div>
                         </div>
                         <div class="job-period">July 2025 – Present</div>
                     </div>
                     <ul>
-                        <li>Engineered a YOLOv11n object detection model on a 3400+ image Roboflow dataset, classifying tennis players, balls, and officials from recorded match footage for a sports analytics company serving youth teams</li>
-                        <li>Deployed model on Google Colab with NVIDIA T4 GPU enhanced with CUDA, and exported to ONNX for GPU-accelerated inference and real-time performance tracking</li>
-                        <li>Leveraging video extraction for further fine-tuning with OpenCV and labeling with Label Studio, enabling automated speed calculations and performance metrics for athletes</li>
-                    </ul>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Undergraduate Research Assistant</div>
-                            <div class="company">HUMAIN Lab (Advisor: Dr. Leqi Liu)• Austin, TX</div>
-                        </div>
-                        <div class="job-period">September 2025 – Present</div>
-                    </div>
-                    <ul>
-                        <li>Engineering Fin-Bench, a comprehensive Python framework integrating yfinance market data and RSS-based news sentiment for evaluating LLMs on structured, short-term stock forecasting</li>
-                        <li>Pioneering  multi-model evaluation pipelines, benchmarking GPT-4o, Llama 3.1, and Mixtral against baseline strategies on risk-adjusted metrics like Sharpe ratio, Max Drawdown, and Returns Volatility</li>
-                        <li>Developing a backtesting engine and Streamlit dashboard, simulating realistic constraints across 10+ U.S equities</li>
-                    </ul>
-                </div>
-
-
-                <div class="job-card">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Software Engineer Intern</div>
-                            <div class="company">Longhorn Developers • Austin, TX</div>
-                        </div>
-                        <div class="job-period">August 2025 – Present</div>
-                    </div>
-                    <ul>
-                        <li>Developing UT Lectures Plus extension using JavaScript frameworks to integrate searchable transcripts into UT Austin's LectureOnline and TowerLA platforms, improving study accessibility for 300+ students</li>
-                        <li>Collaborating with developer fellows to explore AI-powered summaries and speech recognition tools to auto-generate transcripts when captions are missing or low quality</li>
-                    </ul>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Generative AI Engineer</div>
-                            <div class="company">Outlier.ai (via Scale AI) • Remote</div>
-                        </div>
-                        <div class="job-period">May 2025 – Present</div>
-                    </div>
-                    <ul>
-                        <li>Engineered $600 worth of domain-specific prompts and evaluation rubrics to assess leading LLMs (OpenAI, Anthropic, Meta), designing high-variance tasks with structured criteria (80% model accuracy) to evaluate model safety and reliability</li>
-                        <li>Worked with MCP servers to query static datasets across 3+ services (e.g., Airtable, Notion, MongoDB), leveraging JSON-based tool calls and schema interpretation of 15+ fields to receive structured, time-invariant data</li>
+                        <li>Engineered a YOLOv11n object detection model to classify tennis players and balls from youth match footage</li>
+                        <li>Optimized and ran the model trained on a 3400+ image Roboflow dataset on an NVIDIA T4 GPU with CUDA</li>
+                        <li>Exported to ONNX for GPU-accelerated inference and integrating OpenCV/Labellerr for frame extraction</li>
                     </ul>
                 </div>
             </div>
@@ -591,48 +631,71 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2>Featured Projects</h2>
+            <div class="projects-header">
+                <h2>Featured Projects</h2>
+                <div class="projects-toggle">
+                    <button class="toggle-btn active" onclick="toggleProjects('featured')">Featured</button>
+                    <button class="toggle-btn" onclick="toggleProjects('all')">View All Projects</button>
+                </div>
+            </div>
+            
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-title">DocQuery AI</div>
-                    <div class="project-tech">Python, Streamlit, Langchain</div>
-                    <p>Built an end-to-end RAG application to ingest website/PDF unstructured data, convert them with Docling, and split into structured chunks for retrieval. Implemented OpenAI embeddings with FAISS, reducing average query-to-response time by 75% compared to traditional keyword search methods</p>
+                    <div class="project-title">Celer Stringing AI Chatbot</div>
+                    <div class="project-tech">Python, Chroma, Ollama, Langchain, MySQL</div>
+                    <p>Built an internal AI chatbot to query a MySQL database of 300+ customer records, streamlining operations by 40% for a $10K+ tennis racquet stringing business. Integrated semantic similarity search with few-shot prompts using Ollama SQLCoder-7B and ChromaDB</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Personal Weather Portal</div>
+                    <div class="project-tech">Python, JavaScript, HTML/CSS, AWS</div>
+                    <p>Implemented a multiprocessing Flask ETL portal to store per-month time-series into SQLite with OAuth Google authentication and SSL Certificate. Built RESTful admin/user APIs supporting CRUD and a JSON endpoint serving parameter-level analysis. Developed AJAX-based frontend with Jinja and dynamic charts, and deployed to AWS EC2</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Weather Prediction with PINNs</div>
+                    <div class="project-tech">Python, PyTorch</div>
+                    <p>Developing a continual learning framework with Physics-Informed Neural Networks to forecast weather. Validating the framework on the Heat Equation, using sparse supervision data to benchmark robustness</p>
                 </div>
 
                 <div class="project-card">
                     <div class="project-title">ExxonMobil Energy AI Hackathon</div>
                     <div class="project-tech">Python, Jupyter, Google Gemini, OpenAI</div>
-                    <p>Predicted energy usage during hydraulic fracturing from real-time ExxonMobil data alongside PhD students in PGE, achieving a MAPE of ~0.1. Developed RFR and XGBoost models with ~75% validation R², securing 4th place in code score</p>
+                    <p>Engineered the ML pipeline using RFR and XGBoost models on ExxonMobil data alongside PhD students. Predicted hydraulic fracturing energy usage, achieving an average validation R² of ~75% and MAPE of ~0.1. Secured 4th place in code score by implementing comprehensive statistical visualizations</p>
                 </div>
+            </div>
 
-                <div class="project-card">
-                    <div class="project-title">Celer Stringing AI Chatbot</div>
-                    <div class="project-tech">Python, Ollama, Langchain, MySQL</div>
-                    <p>Built an internal AI chatbot to query a MySQL database of 300+ customer records, streamlining operations by 40% for a $10K+ tennis racquet stringing business. Integrated semantic similarity search with vector embeddings</p>
-                </div>
+            <div class="additional-projects" id="additionalProjects">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-title">DocQuery AI</div>
+                        <div class="project-tech">Python, Streamlit, Langchain</div>
+                        <p>Built an end-to-end RAG application to ingest website/PDF unstructured data, convert them with Docling, and split into structured chunks for retrieval. Implemented OpenAI embeddings with FAISS, reducing average query-to-response time by 75% compared to traditional keyword search methods</p>
+                    </div>
 
-                <div class="project-card">
-                    <div class="project-title">ATP Tour Performance Dashboard</div>
-                    <div class="project-tech">R Shiny, R Studio, Tidyverse</div>
-                    <p>Performed exploratory data analysis on 1,000+ ATP match results and developed an interactive, PaaS-hosted R Shiny dashboard to analyze the top 180 tennis players with dynamic Elo rating filtering</p>
-                </div>
+                    <div class="project-card">
+                        <div class="project-title">ATP Tour Performance Dashboard</div>
+                        <div class="project-tech">R Shiny, R Studio, Tidyverse</div>
+                        <p>Performed exploratory data analysis on 1,000+ ATP match results and developed an interactive, PaaS-hosted R Shiny dashboard to analyze the top 180 tennis players with dynamic Elo rating filtering and customizable data visualizations using ggplot2</p>
+                    </div>
 
-                <div class="project-card">
-                    <div class="project-title">Registration Planning Project</div>
-                    <div class="project-tech">Python, unittest</div>
-                    <p>Developed a Python course-registration planner that models UT prerequisite relationships as a directed graph. Implemented DFS cycle detection and max-heap-driven topological sort with 100% test pass rate</p>
-                </div>
+                    <div class="project-card">
+                        <div class="project-title">Registration Planning Project</div>
+                        <div class="project-tech">Python, unittest</div>
+                        <p>Developed a Python course-registration planner that models UT prerequisite relationships as a directed graph with an adjacency matrix. Implemented DFS cycle detection algorithm, recursive longest-path analysis, and max-heap-driven topological sort with 100% test pass rate</p>
+                    </div>
 
-                <div class="project-card">
-                    <div class="project-title">Reducible Words Program</div>
-                    <div class="project-tech">Python</div>
-                    <p>Implemented a custom prime-sized hash table with double hashing to process 1M+ character dictionaries. Designed a recursive reducibility algorithm with memoization, achieving 100% pass rate across 50 unit tests</p>
+                    <div class="project-card">
+                        <div class="project-title">Reducible Words Program</div>
+                        <div class="project-tech">Python</div>
+                        <p>Implemented a custom prime-sized hash table with double hashing to process 1M+ character dictionaries with O(1) average-time lookups. Designed a recursive reducibility algorithm with memoization, achieving 100% pass rate across 50 unit tests</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-     <!-- Clubs Section -->
+    <!-- Clubs Section -->
     <section id="clubs" class="clubs">
         <div class="container">
             <h2>Campus Involvement & Activities</h2>
@@ -695,12 +758,27 @@
                     <div class="skill-tags">
                         <span class="skill-tag">Langchain</span>
                         <span class="skill-tag">Flask</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">SQLAlchemy</span>
                         <span class="skill-tag">Streamlit</span>
                         <span class="skill-tag">OpenAI</span>
                         <span class="skill-tag">Ollama</span>
+                        <span class="skill-tag">Google Gemini</span>
+                        <span class="skill-tag">n8n</span>
+                        <span class="skill-tag">LiveKit</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Databases & Cloud</h3>
+                    <div class="skill-tags">
                         <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">ChromaDB</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">OAuth</span>
+                        <span class="skill-tag">Git</span>
                     </div>
                 </div>
 
@@ -715,17 +793,6 @@
                         <span class="skill-tag">NumPy</span>
                         <span class="skill-tag">Pandas</span>
                         <span class="skill-tag">Matplotlib</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Cloud & DevOps</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">OAuth</span>
-                        <span class="skill-tag">ChromaDB</span>
                     </div>
                 </div>
             </div>
@@ -746,6 +813,9 @@
                 </a>
                 <a href="https://linkedin.com/in/vinay-devarakonda" class="contact-link">
                     💼 LinkedIn
+                </a>
+                <a href="https://vinayd1.netlify.app" class="contact-link">
+                    🌐 Portfolio
                 </a>
             </div>
         </div>
@@ -782,6 +852,22 @@
                 nav.style.background = 'rgba(15, 23, 42, 0.95)';
             }
         });
+
+        // Toggle projects view
+        function toggleProjects(view) {
+            const additionalProjects = document.getElementById('additionalProjects');
+            const buttons = document.querySelectorAll('.toggle-btn');
+            
+            if (view === 'all') {
+                additionalProjects.classList.add('show');
+                buttons[0].classList.remove('active');
+                buttons[1].classList.add('active');
+            } else {
+                additionalProjects.classList.remove('show');
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+            }
+        }
 
         // Add some interactive hover effects
         document.querySelectorAll('.project-card, .job-card').forEach(card => {
