@@ -312,19 +312,19 @@
             border-color: transparent;
         }
 
-        .projects-grid {
+        .projects-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
         }
 
         .additional-projects {
             display: none;
-            margin-top: 2rem;
+            grid-column: 1 / -1;
         }
 
         .additional-projects.show {
-            display: block;
+            display: contents;
         }
 
         .project-card {
@@ -639,7 +639,7 @@
                 </div>
             </div>
             
-            <div class="projects-grid">
+            <div class="projects-container">
                 <div class="project-card">
                     <div class="project-title">Celer Stringing AI Chatbot</div>
                     <div class="project-tech">Python, Chroma, Ollama, Langchain, MySQL</div>
@@ -663,10 +663,8 @@
                     <div class="project-tech">Python, Jupyter, Google Gemini, OpenAI</div>
                     <p>Engineered the ML pipeline using RFR and XGBoost models on ExxonMobil data alongside PhD students. Predicted hydraulic fracturing energy usage, achieving an average validation R² of ~75% and MAPE of ~0.1. Secured 4th place in code score by implementing comprehensive statistical visualizations</p>
                 </div>
-            </div>
 
-            <div class="additional-projects" id="additionalProjects">
-                <div class="projects-grid">
+                <div class="additional-projects" id="additionalProjects">
                     <div class="project-card">
                         <div class="project-title">DocQuery AI</div>
                         <div class="project-tech">Python, Streamlit, Langchain</div>
