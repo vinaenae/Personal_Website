@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinay Devarakonda - Data Scientist & AI Engineer</title>
+    <title>Vinay Devarakonda - Software Engineer & ML Researcher</title>
     <style>
         * {
             margin: 0;
@@ -529,6 +529,25 @@
             z-index: 1;
         }
 
+        .project-title a,
+        .job-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .project-title a:hover,
+        .job-title a:hover {
+            text-decoration: underline;
+        }
+
+        .job-card a {
+            color: #93c5fd;
+        }
+
+        .job-title a {
+            color: inherit;
+        }
+
         .project-tech {
             color: #94a3b8;
             font-size: 0.9rem;
@@ -729,14 +748,16 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Vinay Devarakonda</h1>
-                <p class="subtitle">Data Scientist • AI Engineer • ML Researcher</p>
+                <p class="subtitle">Software Engineer • Founder • ML Researcher</p>
                 <p class="description">
-                    Passionate about leveraging cutting-edge AI and machine learning to solve complex problems. 
-                    Currently pursuing dual degrees in Statistics & Data Science and Mathematics at UT Austin, 
-                    with hands-on experience in machine learning research, computer vision, and computational seismology.
+                    I build production software and applied machine learning.
+                    Software engineering intern at Alias Intelligence and founder of Ragify,
+                    with published research on calibrated LLM financial forecasting.
+                    Dual degree in Mathematics and Statistics &amp; Data Science at UT Austin.
                 </p>
                 <div class="cta-buttons">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="https://ragifyapp.com/" target="_blank" class="btn btn-secondary">Ragify</a>
                     <a href="https://github.com/vinaenae" target="_blank" class="btn btn-secondary">GitHub</a>
                     <a href="https://linkedin.com/in/vinay-devarakonda" target="_blank" class="btn btn-secondary">LinkedIn</a>
                 </div>
@@ -751,16 +772,13 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I'm a driven mathematics and data science student with a passion for machine learning research 
-                        and artificial intelligence. My journey spans from developing Physics-Informed Neural Networks 
-                        for weather prediction to building computer vision models for sports analytics and conducting 
-                        computational seismology research.
+                        I'm a mathematics and data science student at UT Austin who ships production systems and applied machine learning.
+                        At Alias Intelligence I built transaction infrastructure and an LLM adjudication pipeline that auto-processed most vendor orders.
+                        I also founded Ragify, a music practice platform used by hundreds of students and professional artists.
                     </p>
                     <p>
-                        Currently, I'm engaged in multiple research positions at the Oden Institute, Hendrickson Lab, 
-                        and HUMAIN Lab, where I work on cutting-edge problems in seismic data analysis, ecological 
-                        modeling, and financial forecasting using LLMs. I love tackling challenging problems that sit at 
-                        the intersection of mathematics, computer science, and real-world applications.
+                        My research includes FinBench, an arXiv preprint on time-gated LLM financial forecasting, submitted to the ICLR 2026 Advances in Financial AI workshop.
+                        I've also trained habitat models on satellite embeddings and built computer vision for tennis match footage.
                     </p>
                     <p>
                         When I'm not coding or researching, you can find me playing tennis or exploring the latest 
@@ -769,14 +787,15 @@
                 </div>
                 <div class="education-card">
                     <h3>The University of Texas at Austin</h3>
-                    <p><strong>B.S. in Statistics & Data Science</strong></p>
-                    <p><strong>B.S. in Mathematics</strong> (Double Major)</p>
-                    <p><strong>Programming & Computation Certificate</strong> (CS Minor)</p>
+                    <p><strong>B.S. in Mathematics</strong></p>
+                    <p><strong>B.S. in Statistics &amp; Data Science</strong> (Double Major)</p>
+                    <p><strong>Programming &amp; Computation Certificate</strong> (Computer Science Minor)</p>
+                    <p><strong>GPA:</strong> 3.53 / 4.00</p>
                     <p><strong>Expected Graduation:</strong> May 2028</p>
                     <div class="coursework">
-                        <strong>Relevant Coursework:</strong> Data Structures & Algorithms, Discrete Math, 
-                        Linear Algebra, Scientific Computation, Probability & Statistical Inference, 
-                        Multivariable Calculus, Web Programming, Intro to Data Science
+                        <strong>Relevant Coursework:</strong> Data Structures &amp; Algorithms, Databases,
+                        Web Programming, Discrete Mathematics, Scientific Computation, Practical ML,
+                        Probability, Linear Algebra, Math for ML, Multivariable Calculus, Data Visualization
                     </div>
                 </div>
             </div>
@@ -791,57 +810,76 @@
                 <div class="job-card">
                     <div class="job-header">
                         <div>
-                            <div class="job-title">Machine Learning Research Intern</div>
-                            <div class="company">Oden Institute – Texas Consortium for Computational Seismology • Austin, TX</div>
+                            <div class="job-title">Software Engineering Intern</div>
+                            <div class="company">Alias Intelligence • Austin, TX</div>
                         </div>
-                        <div class="job-period">Oct 2025 – Present</div>
+                        <div class="job-period">June 2026 – Aug. 2026</div>
                     </div>
                     <ul>
-                        <li>Developing an attribute to transform complex seismic data for SAM 2 and DINOv3 segmentation models</li>
+                        <li>Enabled 8K+ transactions across 40+ users by building a transaction system that handled 20+ concurrency edge cases</li>
+                        <li>Reduced RM processing time by 60% by auto-adjudicating 350+ orders (70% of all orders), integrating GPT-4o confidence scoring into a real-time AWS and Missive webhook pipeline that processed 450+ vendor replies and routed orders downstream</li>
+                        <li>Created performance monitoring for 20+ managers, including the CTO, with an OpenSearch-powered analytics dashboard</li>
+                        <li>Handled 40+ daily request dispatches by engineering a queue-based claiming system with Terraform and stream handlers</li>
                     </ul>
                 </div>
 
                 <div class="job-card">
                     <div class="job-header">
                         <div>
-                            <div class="job-title">Data Science Intern</div>
+                            <div class="job-title"><a href="https://ragifyapp.com/" target="_blank">Founder &amp; Software Engineer</a></div>
+                            <div class="company">Ragify • Dallas, TX</div>
+                        </div>
+                        <div class="job-period">May 2026 – Present</div>
+                    </div>
+                    <ul>
+                        <li>Reached 350+ active users and 20K+ invocations, including adoption by professional Carnatic vocalist Neyveli Ramalakshmi and 75+ students at Sukadhwani Institute, by building a Google-verified music practice platform</li>
+                        <li>Enabled auto-pitch detection by implementing a convolutional estimator and training a 4-class classifier on KritiSamhita</li>
+                        <li>Expanded engagement with 5+ interactive quiz modules, a 3D metronome, leaderboards, and persistent practice sessions</li>
+                        <li>Partnered with 5+ certified music teachers across New Jersey and Texas and led collaboration with 12+ senior music artists</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Software Developer</div>
+                            <div class="company">Daemo AI • Remote</div>
+                        </div>
+                        <div class="job-period">Jan. 2026 – Mar. 2026</div>
+                    </div>
+                    <ul>
+                        <li>Processed 200+ financial queries across 30+ user sessions by building a Stripe finance automation system with Daemo Engine and Express across 6 REST endpoints and 7 tools for payments, revenue analysis, and email workflows</li>
+                        <li>Reduced financial query lookup time by 60% versus manual search by deploying an automated backend to Railway</li>
+                        <li>Engineered a 4-agent trading simulation executing 1,000+ simulated trades by ingesting Alpha Vantage market data, synchronizing portfolios and trade state in MongoDB, and coordinating agent execution through Daemo APIs</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Data Engineering Intern</div>
                             <div class="company">Hendrickson Lab • Austin, TX</div>
                         </div>
-                        <div class="job-period">Oct 2025 – Present</div>
+                        <div class="job-period">Jan. 2026 – May 2026</div>
                     </div>
                     <ul>
-                        <li>Building species distribution models by integrating Google Satellite Embeddings with PostgreSQL data hosted on Texas Advanced Computing Center, applying predictive analytics to map habitat suitability</li>
-                        <li>Developing interactive geospatial visualizations of species occurrence data to support ecological modeling</li>
+                        <li>Reduced geospatial feature-processing time by 55% while supporting a $5K Google Satellite Embedding grant proposal by engineering a PostgreSQL pipeline on TACC to integrate Fishes of Texas and satellite-embedding data</li>
+                        <li>Achieved 0.84 ROC-AUC across 12 trout species by training and tuning XGBoost and Random Forest models with Google Satellite Embeddings to predict habitat suitability across Texas regions</li>
                     </ul>
                 </div>
 
                 <div class="job-card">
                     <div class="job-header">
                         <div>
-                            <div class="job-title">Machine Learning Research Assistant</div>
+                            <div class="job-title"><a href="https://arxiv.org/pdf/2607.16229" target="_blank">Machine Learning Research Assistant</a></div>
                             <div class="company">HUMAIN Lab (Advisor: Dr. Leqi Liu) • Austin, TX</div>
                         </div>
-                        <div class="job-period">Sep 2025 – Present</div>
+                        <div class="job-period">Sep. 2025 – Feb. 2026</div>
                     </div>
                     <ul>
-                        <li>Engineering a comprehensive Python framework for evaluating LLMs on structured, short-term stock forecasting</li>
-                        <li>Integrating y-finance market data and RSS-based news sentiment for multi-modal evaluation pipelines</li>
-                        <li>Benchmarking against baseline strategies on risk-adjusted metrics across 10+ U.S equities</li>
-                    </ul>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Computer Vision Engineer</div>
-                            <div class="company">StatOracle • Austin, TX</div>
-                        </div>
-                        <div class="job-period">July 2025 – Present</div>
-                    </div>
-                    <ul>
-                        <li>Engineered a YOLOv11n object detection model to classify tennis players and balls from youth match footage</li>
-                        <li>Optimized and ran the model trained on a 3400+ image Roboflow dataset on an NVIDIA T4 GPU with CUDA</li>
-                        <li>Exported to ONNX for GPU-accelerated inference and integrating OpenCV/Labellerr for frame extraction</li>
+                        <li>Co-authored and published <a href="https://arxiv.org/pdf/2607.16229" target="_blank">FinBench</a> as an arXiv preprint and submitted it to the ICLR 2026 Advances in Financial AI workshop, a time-gated benchmark for calibrated LLM financial forecasting across 3 intraday horizons</li>
+                        <li>Built a time-gating protocol for look-ahead bias, using Brier and Winkler scoring to penalize miscalibrated model confidence</li>
+                        <li>Achieved a 0.577 Brier Skill Score against a coin-flip baseline across 6 LLMs by evaluating AAPL, MSFT, and NVDA</li>
                     </ul>
                 </div>
             </div>
@@ -861,9 +899,15 @@
             
             <div class="projects-container">
                 <div class="project-card">
-                    <div class="project-title">Celer Stringing AI Chatbot</div>
-                    <div class="project-tech">Python, Chroma, Ollama, Langchain, MySQL</div>
-                    <p>Built an internal AI chatbot to query a MySQL database of 300+ customer records, streamlining operations by 40% for a $10K+ tennis racquet stringing business. Integrated semantic similarity search with few-shot prompts using Ollama SQLCoder-7B and ChromaDB</p>
+                    <div class="project-title"><a href="https://stat-vision-play.vercel.app/" target="_blank">StatOracle – CV Sports Intelligence</a></div>
+                    <div class="project-tech">C++, Python, AWS, CUDA, OpenCV, YOLO · July 2025 – Jan. 2026</div>
+                    <p>Achieved 91% precision, 86% recall, and 40+ FPS on footage from 7+ high-school tennis matches. Automated player and ball detection with a YOLOv11n model trained on 4,000+ annotated frames, using SageMaker Ground Truth, S3, ONNX export, and a C++ and OpenCV inference pipeline.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Tennis Stringing AI Platform</div>
+                    <div class="project-tech">Java, Spring Boot, Ollama, LangChain4j, MySQL · Aug. 2025 – Apr. 2026</div>
+                    <p>Reduced customer-record lookup and insertion time by ~40% for a $15K+ tennis racquet stringing business by combining SQLCoder-7B few-shot prompting with ChromaDB semantic search. Enabled natural-language querying across 500+ customer records through an internal AI service connected to MySQL.</p>
                 </div>
 
                 <div class="project-card">
@@ -949,56 +993,66 @@
                     <h3>Languages</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
-                        <span class="skill-tag">R</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript/TypeScript</span>
                         <span class="skill-tag">Java</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">R</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <h3>Frameworks & Tools</h3>
+                    <h3>Frameworks</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Langchain</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Express</span>
                         <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">LangChain</span>
                         <span class="skill-tag">SQLAlchemy</span>
                         <span class="skill-tag">Streamlit</span>
-                        <span class="skill-tag">OpenAI</span>
                         <span class="skill-tag">Ollama</span>
-                        <span class="skill-tag">Google Gemini</span>
-                        <span class="skill-tag">n8n</span>
-                        <span class="skill-tag">LiveKit</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <h3>Databases & Cloud</h3>
+                    <h3>Cloud &amp; Tools</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">AWS Lambda</span>
+                        <span class="skill-tag">DynamoDB</span>
                         <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">ChromaDB</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">OAuth</span>
-                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Cloudflare Workers</span>
+                        <span class="skill-tag">S3</span>
+                        <span class="skill-tag">OpenSearch</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Supabase</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <h3>AI/ML Libraries</h3>
+                    <h3>Machine Learning</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">PyTorch</span>
                         <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">YOLO</span>
-                        <span class="skill-tag">OpenCV</span>
                         <span class="skill-tag">scikit-learn</span>
                         <span class="skill-tag">NumPy</span>
                         <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">YOLO</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">SAM2</span>
+                        <span class="skill-tag">DINOv3</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Certifications</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Stanford Machine Learning Specialization (Audited)</span>
+                        <span class="skill-tag">AWS Machine Learning Foundations</span>
                     </div>
                 </div>
             </div>
@@ -1033,7 +1087,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Vinay Devarakonda. Built with passion for AI and innovation.</p>
+            <p>&copy; 2026 Vinay Devarakonda. Built with passion for AI and innovation.</p>
         </div>
     </footer>
 
