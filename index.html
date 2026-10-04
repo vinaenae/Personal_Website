@@ -1054,7 +1054,7 @@
             vx: -1.6,
             vy: 0.7,
             hits: 0,
-            cooldown: 0,
+            armed: true,
             keys: {}
         };
 
@@ -1118,7 +1118,6 @@
 
             rally.bx += rally.vx;
             rally.by += rally.vy;
-            if (rally.cooldown > 0) rally.cooldown -= 1;
 
             if (rally.by < radius) {
                 rally.by = radius;
@@ -1141,16 +1140,28 @@
             const headY = rally.ry - racquetHeight * 0.18;
             const dx = rally.bx - headX;
             const dy = rally.by - headY;
+            const dist = Math.hypot(dx, dy);
             const reach = 54 + radius;
-            if (dx * dx + dy * dy < reach * reach && rally.cooldown === 0) {
-                const dist = Math.hypot(dx, dy) || 1;
-                rally.vx = Math.max((dx / dist) * 2.6, 2.2);
-                rally.vy = (dy / dist) * 1.6;
-                rally.bx = headX + (dx / dist) * (reach + 4);
-                rally.by = headY + (dy / dist) * (reach + 4);
+            const nx = dist < 1 ? 1 : dx / dist;
+            const ny = dist < 1 ? 0 : dy / dist;
+            const clearOfRacquet = dist > reach + 64;
+
+            if (dist < reach && rally.armed) {
+                const exitSpeed = 2.8;
+                rally.vx = nx * exitSpeed;
+                rally.vy = ny * exitSpeed;
+                rally.bx = headX + nx * (reach + 12);
+                rally.by = headY + ny * (reach + 12);
+                rally.armed = false;
                 rally.hits += 1;
-                rally.cooldown = 28;
                 showHit(awards[(rally.hits - 1) % awards.length], headX, headY);
+            } else if (dist < reach) {
+                rally.bx = headX + nx * (reach + 12);
+                rally.by = headY + ny * (reach + 12);
+                rally.vx = nx * 2.8;
+                rally.vy = ny * 2.8;
+            } else if (clearOfRacquet) {
+                rally.armed = true;
             }
 
             placePiece(ballEl, rally.bx - radius, rally.by - radius);
