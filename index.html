@@ -230,10 +230,59 @@
 
         .court-lines::before {
             left: 50%;
-            top: 0;
             bottom: 0;
             width: 6px;
+            height: 16%;
             transform: translateX(-50%);
+        }
+
+        .net {
+            position: absolute;
+            top: 8px;
+            bottom: 8px;
+            left: 50%;
+            width: 16px;
+            transform: translateX(-50%);
+            z-index: 2;
+            pointer-events: none;
+            background-color: rgba(255, 255, 255, 0.28);
+            background-image:
+                linear-gradient(90deg, transparent 42%, rgba(255, 255, 255, 0.95) 42% 58%, transparent 58%),
+                linear-gradient(transparent 42%, rgba(255, 255, 255, 0.95) 42% 58%, transparent 58%);
+            background-size: 8px 10px;
+            border-top: 8px solid #fff;
+            box-shadow: 0 0 0 2px rgba(28, 43, 31, 0.45);
+        }
+
+        .net::before,
+        .net::after {
+            content: '';
+            position: absolute;
+            left: 1px;
+            width: 10px;
+            background: #f7f7f7;
+            border: 3px solid var(--ink);
+        }
+
+        .net::before {
+            top: -10px;
+            height: 16px;
+        }
+
+        .net::after {
+            bottom: -4px;
+            height: 20px;
+        }
+
+        .ball-machine {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            width: 86px;
+            height: 124px;
+            transform: translateY(-50%);
+            z-index: 2;
+            pointer-events: none;
         }
 
         .court-lines::after {
@@ -300,12 +349,14 @@
 
         .racquet {
             width: 118px;
+            z-index: 4;
             filter: drop-shadow(4px 6px 0 rgba(28, 43, 31, 0.25));
         }
 
         .play-ball {
             width: 48px;
             height: 48px;
+            z-index: 3;
         }
 
         section {
@@ -692,14 +743,22 @@
         </div>
         <div class="play-court" id="play-court" tabindex="0" aria-label="Tennis court. See accomplishments by hitting the ball.">
             <div class="court-lines" aria-hidden="true"></div>
+            <div class="net" aria-hidden="true"></div>
+            <svg class="ball-machine" viewBox="0 0 90 130" aria-hidden="true">
+                <path d="M16 10h58l-10 28H26L16 10z" fill="#1c2b1f"/>
+                <circle cx="36" cy="24" r="7" fill="#ffe14a" stroke="#1c2b1f" stroke-width="2"/>
+                <circle cx="52" cy="22" r="7" fill="#ffe14a" stroke="#1c2b1f" stroke-width="2"/>
+                <rect x="20" y="38" width="50" height="56" rx="8" fill="#f07a3a" stroke="#1c2b1f" stroke-width="4"/>
+                <rect x="30" y="50" width="30" height="14" rx="3" fill="#1c2b1f"/>
+                <path d="M20 72 L2 80 L2 94 L20 86 Z" fill="#fffdf6" stroke="#1c2b1f" stroke-width="4"/>
+                <circle cx="34" cy="110" r="11" fill="#1c2b1f"/>
+                <circle cx="60" cy="110" r="11" fill="#1c2b1f"/>
+                <circle cx="34" cy="110" r="4" fill="#fff"/>
+                <circle cx="60" cy="110" r="4" fill="#fff"/>
+            </svg>
             <div class="hit-readout">
                 <div class="hit-call" id="hit-call">See accomplishments by hitting the ball</div>
             </div>
-            <svg class="play-ball" id="play-ball" viewBox="0 0 64 64" aria-hidden="true">
-                <circle cx="32" cy="32" r="28" fill="#ffe14a" stroke="#1c2b1f" stroke-width="4"/>
-                <path d="M14 18c12 8 12 20 0 28" fill="none" stroke="#fff" stroke-width="4"/>
-                <path d="M50 18c-12 8-12 20 0 28" fill="none" stroke="#fff" stroke-width="4"/>
-            </svg>
             <svg class="racquet" id="racquet" viewBox="0 0 220 280" aria-hidden="true">
                 <ellipse cx="110" cy="92" rx="78" ry="86" fill="#fffdf6" stroke="#1c2b1f" stroke-width="8"/>
                 <ellipse cx="110" cy="92" rx="62" ry="70" fill="none" stroke="#3eae45" stroke-width="6"/>
@@ -1027,7 +1086,6 @@
 
         const court = document.getElementById('play-court');
         const racquet = document.getElementById('racquet');
-        const ballEl = document.getElementById('play-ball');
         const callEl = document.getElementById('hit-call');
         const awards = [
             'Varsity Tennis #1 Mens Tennis player',
@@ -1049,14 +1107,13 @@
         const rally = {
             rx: 150,
             ry: 180,
-            bx: 460,
-            by: 150,
-            vx: -1.6,
-            vy: 0.7,
             hits: 0,
-            armed: true,
             keys: {}
         };
+        const balls = [];
+        let feedWait = 0;
+        const ballSize = 48;
+        const feedSpeed = 2.5;
 
         function placePiece(el, x, y) {
             el.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
@@ -1099,72 +1156,158 @@
             rally.keys[event.key] = false;
         });
 
+        function createBall(x, y) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('class', 'play-ball');
+            svg.setAttribute('viewBox', '0 0 64 64');
+            svg.setAttribute('aria-hidden', 'true');
+            svg.innerHTML = '<circle cx="32" cy="32" r="28" fill="#ffe14a" stroke="#1c2b1f" stroke-width="4"/><path d="M14 18c12 8 12 20 0 28" fill="none" stroke="#fff" stroke-width="4"/><path d="M50 18c-12 8-12 20 0 28" fill="none" stroke="#fff" stroke-width="4"/>';
+            court.appendChild(svg);
+            return {
+                el: svg,
+                x: x,
+                y: y,
+                vx: -feedSpeed,
+                vy: Math.random() * 1.6 - 0.8,
+                state: 'live',
+                restAt: 0
+            };
+        }
+
+        function feedBall(width, height) {
+            const machineHeight = 124;
+            const spawnX = width - 118;
+            const spawnY = height / 2 + (Math.random() * 36 - 18);
+            const top = machineHeight / 2 + 20;
+            const y = Math.min(height - top, Math.max(top, spawnY));
+            balls.push(createBall(spawnX, y));
+        }
+
         function stepRally() {
             const width = court.clientWidth;
             const height = court.clientHeight;
-            const ballSize = 48;
             const radius = ballSize / 2;
             const racquetWidth = 118;
             const racquetHeight = 118 * (280 / 220);
             const speed = 6;
+            const now = performance.now();
 
             if (rally.keys.ArrowLeft) rally.rx -= speed;
             if (rally.keys.ArrowRight) rally.rx += speed;
             if (rally.keys.ArrowUp) rally.ry -= speed;
             if (rally.keys.ArrowDown) rally.ry += speed;
 
-            rally.rx = Math.min(width - 30, Math.max(30, rally.rx));
+            const netLeft = width / 2 - 10;
+            rally.rx = Math.min(netLeft - racquetWidth / 2, Math.max(30, rally.rx));
             rally.ry = Math.min(height - 30, Math.max(30, rally.ry));
-
-            rally.bx += rally.vx;
-            rally.by += rally.vy;
-
-            if (rally.by < radius) {
-                rally.by = radius;
-                rally.vy = Math.abs(rally.vy);
-            }
-            if (rally.by > height - radius) {
-                rally.by = height - radius;
-                rally.vy = -Math.abs(rally.vy);
-            }
-            if (rally.bx < radius) {
-                rally.bx = radius;
-                rally.vx = Math.abs(rally.vx);
-            }
-            if (rally.bx > width - radius) {
-                rally.bx = width - radius;
-                rally.vx = -Math.abs(rally.vx) * 0.98;
-            }
 
             const headX = rally.rx;
             const headY = rally.ry - racquetHeight * 0.18;
-            const dx = rally.bx - headX;
-            const dy = rally.by - headY;
-            const dist = Math.hypot(dx, dy);
             const reach = 54 + radius;
-            const nx = dist < 1 ? 1 : dx / dist;
-            const ny = dist < 1 ? 0 : dy / dist;
-            const clearOfRacquet = dist > reach + 64;
+            const liveBall = balls.some((ball) => ball.state === 'live');
 
-            if (dist < reach && rally.armed) {
-                const exitSpeed = 2.8;
-                rally.vx = nx * exitSpeed;
-                rally.vy = ny * exitSpeed;
-                rally.bx = headX + nx * (reach + 12);
-                rally.by = headY + ny * (reach + 12);
-                rally.armed = false;
-                rally.hits += 1;
-                showHit(awards[(rally.hits - 1) % awards.length], headX, headY);
-            } else if (dist < reach) {
-                rally.bx = headX + nx * (reach + 12);
-                rally.by = headY + ny * (reach + 12);
-                rally.vx = nx * 2.8;
-                rally.vy = ny * 2.8;
-            } else if (clearOfRacquet) {
-                rally.armed = true;
+            if (!liveBall) {
+                feedWait += 1;
+                if (feedWait > 28) {
+                    feedWait = 0;
+                    feedBall(width, height);
+                }
             }
 
-            placePiece(ballEl, rally.bx - radius, rally.by - radius);
+            for (let i = balls.length - 1; i >= 0; i -= 1) {
+                const ball = balls[i];
+                if (ball.state === 'rest') {
+                    const elapsed = now - ball.restAt;
+                    if (elapsed >= 2000) {
+                        ball.el.remove();
+                        balls.splice(i, 1);
+                        continue;
+                    }
+                    ball.el.style.opacity = elapsed > 1650 ? String(1 - (elapsed - 1650) / 350) : '1';
+                    placePiece(ball.el, ball.x - radius, ball.y - radius);
+                    continue;
+                }
+
+                if (ball.state === 'cross') {
+                    ball.x += ball.vx;
+                    ball.y += ball.vy;
+                    const rightMin = width / 2 + 28;
+                    const rightMax = width - 120;
+                    let bounced = false;
+
+                    if (ball.y < radius) {
+                        ball.y = radius;
+                        ball.vy = Math.abs(ball.vy);
+                        bounced = true;
+                    }
+                    if (ball.y > height - radius) {
+                        ball.y = height - radius;
+                        ball.vy = -Math.abs(ball.vy);
+                        bounced = true;
+                    }
+                    if (ball.x >= rightMin) ball.crossed = true;
+                    if (ball.crossed && ball.x < rightMin) {
+                        ball.x = rightMin;
+                        ball.vx = Math.abs(ball.vx);
+                        bounced = true;
+                    }
+                    if (ball.x > rightMax) {
+                        ball.x = rightMax;
+                        ball.vx = -Math.abs(ball.vx);
+                        bounced = true;
+                    }
+                    if (bounced) {
+                        ball.vx *= 0.76;
+                        ball.vy *= 0.76;
+                    }
+
+                    const elapsed = now - ball.hitAt;
+                    if (elapsed >= 2000) {
+                        ball.el.remove();
+                        balls.splice(i, 1);
+                        continue;
+                    }
+                    ball.el.style.opacity = elapsed > 1650 ? String(1 - (elapsed - 1650) / 350) : '1';
+                    placePiece(ball.el, ball.x - radius, ball.y - radius);
+                    continue;
+                }
+
+                ball.x += ball.vx;
+                ball.y += ball.vy;
+
+                if (ball.y < radius) {
+                    ball.y = radius;
+                    ball.vy = Math.abs(ball.vy);
+                }
+                if (ball.y > height - radius) {
+                    ball.y = height - radius;
+                    ball.vy = -Math.abs(ball.vy);
+                }
+                if (ball.x < radius) {
+                    ball.x = radius;
+                    ball.vx = Math.abs(ball.vx);
+                }
+                if (ball.x > width - radius) {
+                    ball.x = width - radius;
+                    ball.vx = -Math.abs(ball.vx);
+                }
+
+                const dx = ball.x - headX;
+                const dy = ball.y - headY;
+                const dist = Math.hypot(dx, dy);
+                if (dist < reach) {
+                    ball.vx = 4.4;
+                    ball.vy = Math.random() * 2.4 - 1.2;
+                    ball.state = 'cross';
+                    ball.crossed = false;
+                    ball.hitAt = now;
+                    rally.hits += 1;
+                    showHit(awards[(rally.hits - 1) % awards.length], headX, headY);
+                }
+
+                placePiece(ball.el, ball.x - radius, ball.y - radius);
+            }
+
             placePiece(racquet, rally.rx - racquetWidth / 2, rally.ry - racquetHeight * 0.42);
             requestAnimationFrame(stepRally);
         }
