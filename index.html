@@ -720,6 +720,7 @@
                 <li><a href="#clubs">Clubs</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="resume.pdf" target="_blank">Resume</a></li>
             </ul>
         </div>
     </nav>
@@ -862,11 +863,25 @@
                             <div class="job-title"><a href="https://apps.apple.com/us/app/ut-dining-ut-austin-food-app/id6743042002" target="_blank">Software Engineering Intern</a></div>
                             <div class="company">Longhorn Developers · Austin, TX</div>
                         </div>
-                        <div class="job-period">Aug. 2025 – Feb. 2026</div>
+                        <div class="job-period">Aug. 2025 – Jan. 2026</div>
                     </div>
                     <ul>
-                        <li>Reduced stale menu records by 60% for 10,000+ active users of the <a href="https://apps.apple.com/us/app/ut-dining-ut-austin-food-app/id6743042002" target="_blank">UT Dining</a> app (160K+ impressions) by implementing Supabase record validation, Cloudflare cache revalidation, and version-based client synchronization in React Native</li>
-                        <li>Cut API traffic by 35% and menu-query latency by 45% by batching Supabase queries, adding indexed lookups, and persisting menu data for local caching with SQLite and Drizzle ORM</li>
+                        <li>Reduced stale menu records by 60% for 10,000+ active users of the <a href="https://apps.apple.com/us/app/ut-dining-ut-austin-food-app/id6743042002" target="_blank">UT Dining</a> app with 160K+ impressions by implementing Supabase record validation, Cloudflare cache revalidation, and version-based client synchronization in React Native</li>
+                        <li>Cut API traffic by 35% and menu-query latency by 45% by batching Supabase queries, adding indexed lookups, and persisting menu data to support local caching with SQLite and Drizzle ORM for faster menu retrieval and reduced network dependency</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Machine Learning Research Intern</div>
+                            <div class="company">Oden Institute – Texas Consortium for Computational Seismology · Austin, TX</div>
+                        </div>
+                        <div class="job-period">Oct. 2025 – Jan. 2026</div>
+                    </div>
+                    <ul>
+                        <li>Improved zero-shot seismic segmentation mIoU by ~40% and achieved a 0.80 Dice score over raw-seismic baselines by integrating TerraSight transformations with Meta SAM 2 and DINOv3 for robust feature extraction from complex data</li>
+                        <li>Processed 2.7GB of seismic imagery by building a pipeline to compute pseudo-slowness and convert outputs to RGB</li>
                     </ul>
                 </div>
 
@@ -902,6 +917,11 @@
                     <div class="project-title"><a href="https://stat-vision-play.vercel.app/" target="_blank">StatOracle – CV Sports Intelligence</a></div>
                     <div class="project-tech">C++, Python, AWS, CUDA, OpenCV, YOLO · July 2025 – Jan. 2026</div>
                     <p>Achieved 91% precision, 86% recall, and 40+ FPS on footage from 7+ high-school tennis matches. Automated player and ball detection with a YOLOv11n model trained on 4,000+ annotated frames, using SageMaker Ground Truth, S3, ONNX export, and a C++ and OpenCV inference pipeline.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">DFW Time-Series Weather Forecasting</div>
+                    <div class="project-tech">Python, Pandas, NumPy, Scikit-Learn, Jupyter · May 2026</div>
+                    <p>Built a Ridge Regression model on NOAA historical data from 50+ years for next-day predictions. Implemented a rolling-window backtesting framework with 90-day prediction intervals. Engineered rolling averages and seasonal predictors to reduce MAE to ~5.027.</p>
                 </div>
                 <div class="project-card">
                     <div class="project-title">Tennis Stringing AI Platform</div>
